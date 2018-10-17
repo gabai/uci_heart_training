@@ -1,6 +1,7 @@
 library(keras)
 
-data <- read.csv("~/Downloads/heart-attack-prediction/data.csv", na.strings="?")
+data <- read.csv(url("https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data"),
+                 na.strings="?")
 
 data <- as.matrix(data)
 str(data)
@@ -27,8 +28,8 @@ print(trainlabel)
 model <- keras_model_sequential()
 
 model %>% 
-  layer_dense(units=8, activation = 'relu', input_shape = c(13)) %>%
-  layer_dense(units = 2, activation = 'softmax')
+  layer_dense(units=25, activation = 'relu', input_shape = c(13)) %>%
+  layer_dense(units = 5, activation = 'softmax')
 
 summary(model)
 
